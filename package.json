@@ -1,6 +1,6 @@
 {
 	"name": "LABKiosk",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": false,
 	"description": "LABKiosk",
 	"main": "./out/main/index.js",

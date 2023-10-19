@@ -1,5 +1,7 @@
 
 
+## 0.0.2 (2023-10-19)
+
 ## [0.7.1](https://github.com/innovation-system/electron-kiosk/compare/v0.7.0...v0.7.1) (2023-09-15)
 
 
