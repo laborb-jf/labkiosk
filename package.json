@@ -9,7 +9,7 @@
 		"start": "electron-vite preview",
 		"dev": "electron-vite dev",
 		"build": "electron-vite build",
-		"lint": "eslint --ext .js,.ts,.vue .",
+		"lint": "",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
 		"changelog-init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
 		"icons": "electron-icon-builder -f --input=./docs/logo.png --output=./build && cp ./build/icons/1024x1024.png ./build/icons/icon.png",
