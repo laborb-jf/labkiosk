@@ -37,6 +37,10 @@ const store = new Store({
 				autoReloadEvery: {
 					type: 'string',
 					default: '1m'
+				},
+				started: {
+					type: 'boolean',
+					default: false
 				}
 			}
 		}
@@ -50,7 +54,8 @@ const store = new Store({
 			autoReload: true,
 			autoReloadMode: 'every',
 			autoReloadHour: 0, // midnight
-			autoReloadEvery: '10s'
+			autoReloadEvery: '5s',
+			started: false
 		}
 	}
 })

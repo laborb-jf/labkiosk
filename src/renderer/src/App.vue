@@ -138,6 +138,8 @@ export default {
 		updateSettings() {
 			if (this.$refs.form.validate()) {
 				this.settings.autoLoad = true
+				this.settings.started = true
+				
 				this.store.setSettings({ ...this.settings })
 				this.checkUrl()
 			}

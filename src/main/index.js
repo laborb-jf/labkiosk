@@ -29,9 +29,7 @@ async function loadMain() {
 	// Fixes error https://github.com/electron/electron/issues/19847
 	try {
 		// example from https://github.com/alex8088/electron-vite-boilerplate/blob/master/electron.vite.config.ts
-		
-			win.loadFile(join(__dirname, '../renderer/index.html'))
-		
+		win.loadFile(join(__dirname, '../renderer/index.html'))
 	} catch (error) {
 		console.error('Error while loading url', error)
 		if (error.code === 'ERR_ABORTED') {
@@ -55,11 +53,11 @@ function resetInactivityTimer() {
 
     inactivityTimeout = setTimeout(() => {
         scheduleReload();
-    }, ms); // 10 seconds
+    }, ms); // 30 seconds
 }
 
 function scheduleReload() {
-    if (!store.get('settings.autoReload')) {
+    if (!store.get('settings.autoReload') || !store.get('settings.started')) {
         return;
     }
 
@@ -113,6 +111,7 @@ function createWindow() {
 
 		screenX = point.x;
 	}, 1000);
+    
 
 	// FIX: https://github.com/innovation-system/electron-kiosk/issues/3
 	win.webContents.on('render-process-gone', (event, detailed) => {
@@ -151,6 +150,19 @@ function createWindow() {
 			})
 		}
 	)
+
+	// Block navigation to other domains
+	win.webContents.on('will-navigate', (event, detailed) => {
+		console.log('did-start-navigation', detailed)
+
+		// If detailed is the same domain as settings.url, continue, otherwise block
+		if (detailed.includes(store.get('settings.url').replace(/^https?:\/\//i, '')) || detailed.includes('vimeo.com')) {
+			console.log('ok');
+		} else {
+			console.log('blocked');
+			event.preventDefault();
+		}
+	})
 
 	loadMain()
 }
