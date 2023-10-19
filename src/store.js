@@ -54,7 +54,7 @@ const store = new Store({
 			autoReload: true,
 			autoReloadMode: 'every',
 			autoReloadHour: 0, // midnight
-			autoReloadEvery: '5s',
+			autoReloadEvery: '30s',
 			started: false
 		}
 	}
